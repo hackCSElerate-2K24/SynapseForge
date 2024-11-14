@@ -1,3 +1,5 @@
 TESING OF APIS: 
-1. REGISTER API DONE
-2. LOGIN API
+1. REGISTER API DONE  http://localhost:5000/api/v1/user/register
+2. LOGIN API          http://localhost:5000/api/v1/user/register
+3. UPDATE API         http://localhost:5000/api/v1/user/profile/update
+
