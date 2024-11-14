@@ -169,3 +169,16 @@ export const updateProfile = async (req, res) => {
         console.log(error);
     }
 }
+
+export const getAllJobSeekerSkills = async (req, res) => {
+    try {
+      const jobSeekers = await User.find({ role: "student" }, "profile.skills email fullName");
+      return res.status(200).json({
+        success: true,
+        data: jobSeekers,
+      });
+    } catch (error) {
+      console.error("Error fetching job seeker skills:", error);
+      return res.status(500).json({ message: "Internal Server Error", success: false });
+    }
+  };
