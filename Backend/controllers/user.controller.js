@@ -205,4 +205,3 @@ export const updateProfile = async (req, res) => {
     return res.status(500).json({ message: "Server Error" });
   }
 };
-cw

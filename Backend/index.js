@@ -30,9 +30,9 @@ app.use((req, res, next) => {
 
 // API routes
 app.use("/api/v1/user", userRote);
-app.use("/api/v1/company", companyRoute);
-app.use("/api/v1/jobs", jobRoutes);
-app.use("/api/v1/applicant", applicantRotes);
+// app.use("/api/v1/company", companyRoute);
+// app.use("/api/v1/jobs", jobRoutes);
+// app.use("/api/v1/applicant", applicantRotes);
 
 // Health check route
 app.get("/health", (req, res) => {
