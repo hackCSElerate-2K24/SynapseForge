@@ -12,18 +12,22 @@ export const register = async (req, res) => {
       return res.status(400).json({ message: "Please fill in all fields" });
     }
 
-    const file = req.file;
-    const fileuri = getDataUri(file);
-    const cloudResponse = await cloudinary.uploader.upload(fileuri.content);
-
-    let user = await User.findOne({ email });
-
-    if (user) {
-      return res
-        .status(400)
-        .json({ message: "User already exists with this email" });
+    let profilePhotoUrl = null;
+    
+    // Only process the file if it exists
+    if (req.file) {
+      const fileuri = getDataUri(req.file);
+      const cloudResponse = await cloudinary.uploader.upload(fileuri.content);
+      profilePhotoUrl = cloudResponse.secure_url;
     }
 
+    // Check if the user already exists
+    let user = await User.findOne({ email });
+    if (user) {
+      return res.status(400).json({ message: "User already exists with this email" });
+    }
+
+    // Hash the password and create the user
     const hashedPassword = await bcrypt.hash(password, 10);
     await User.create({
       fullName,
@@ -32,7 +36,7 @@ export const register = async (req, res) => {
       password: hashedPassword,
       role,
       profile: {
-        profilePhoto: cloudResponse.secure_url,
+        profilePhoto: profilePhotoUrl,
       },
     });
 
@@ -45,6 +49,8 @@ export const register = async (req, res) => {
     return res.status(500).json({ message: "Server Error" });
   }
 };
+
+
 
 
 export const login = async (req, res) => {
