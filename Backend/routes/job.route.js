@@ -3,7 +3,7 @@ import isAuthenticated from "../middlewares/isAuthenticated.js";
 import {
   getAllJobs,
   getJobById,
-  getJobsCreatedByAdmin,
+  getAdminJobs,
   postJob,
 } from "../controllers/job.controller.js";
 
@@ -16,7 +16,7 @@ router.post("/post", isAuthenticated, postJob);
 router.get("/get", isAuthenticated, getAllJobs);
 
 // Route to get jobs created by the admin
-router.get("/getadminjobs", isAuthenticated, getJobsCreatedByAdmin);
+router.get("/getadminjobs", isAuthenticated, getAdminJobs);
 
 // Route to get a job by ID
 router.get("/get/:id", isAuthenticated, getJobById);

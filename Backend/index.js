@@ -3,9 +3,10 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import dotenv from "dotenv";
 import connectDB from "./utils/db.js";
-import userRote from "./routes/user.route.js";
+import userRoute from "./routes/user.route.js";
 import companyRoute from "./routes/company.route.js";
-import resumeRoutes from './routes/resumeRoutes.js';
+import jobRoute from "./routes/job.route.js";
+import applicantRoute from "./routes/application.route.js";
 
 dotenv.config();
 
@@ -21,7 +22,7 @@ const corsOptions = {
   credentials: true,
 };
 
-// Use cors middleware
+// Use CORS middleware
 app.use(cors(corsOptions));
 
 // Logging middleware
@@ -31,11 +32,10 @@ app.use((req, res, next) => {
 });
 
 // API routes
-app.use("/api/v1/user", userRote);
+app.use("/api/v1/user", userRoute);
 app.use("/api/v1/company", companyRoute);
-app.use("/api/v1/jobs", jobRoutes);
-app.use("/api/v1/applicant", applicantRotes);
-app.use('/api/v1/resume', resumeRoutes);
+app.use("/api/v1/jobs", jobRoute);
+app.use("/api/v1/applicant", applicantRoute);
 
 // Health check route
 app.get("/health", (req, res) => {
@@ -50,11 +50,15 @@ app.use((err, req, res, next) => {
 
 // Start server
 const startServer = async () => {
-  await connectDB();
-  const PORT = process.env.PORT || 3000;
-  app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-  });
+  try {
+    await connectDB();
+    const PORT = process.env.PORT || 3000;
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
+    });
+  } catch (error) {
+    console.error("Failed to connect to the database", error);
+  }
 };
 
 startServer();
