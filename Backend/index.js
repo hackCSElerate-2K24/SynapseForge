@@ -6,59 +6,35 @@ import connectDB from "./utils/db.js";
 import userRoute from "./routes/user.route.js";
 import companyRoute from "./routes/company.route.js";
 import jobRoute from "./routes/job.route.js";
-import applicantRoute from "./routes/application.route.js";
+import applicationRoute from "./routes/application.route.js";
 
-dotenv.config();
+dotenv.config({});
 
 const app = express();
 
-// Middleware
+// middleware
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
-
 const corsOptions = {
-  origin: "http://localhost:5173",
-  credentials: true,
-};
+    origin:'http://localhost:5173',
+    credentials:true
+}
 
-// Use CORS middleware
 app.use(cors(corsOptions));
 
-// Logging middleware
-app.use((req, res, next) => {
-  console.log(`${req.method} ${req.url}`);
-  next();
-});
+const PORT = process.env.PORT || 3000;
 
-// API routes
+
+// api's
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/company", companyRoute);
-app.use("/api/v1/jobs", jobRoute);
-app.use("/api/v1/applicant", applicantRoute);
+app.use("/api/v1/job", jobRoute);
+app.use("/api/v1/application", applicationRoute);
 
-// Health check route
-app.get("/health", (req, res) => {
-  res.status(200).json({ message: "Server is healthy" });
-});
 
-// Error handling middleware
-app.use((err, req, res, next) => {
-  console.error(err);
-  res.status(500).json({ message: "Internal Server Error" });
-});
 
-// Start server
-const startServer = async () => {
-  try {
-    await connectDB();
-    const PORT = process.env.PORT || 3000;
-    app.listen(PORT, () => {
-      console.log(`Server is running on port ${PORT}`);
-    });
-  } catch (error) {
-    console.error("Failed to connect to the database", error);
-  }
-};
-
-startServer();
+app.listen(PORT,()=>{
+    connectDB();
+    console.log(`Server running at port ${PORT}`);
+})
