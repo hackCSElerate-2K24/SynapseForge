@@ -4,6 +4,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import connectDB from "./utils/db.js";
 import userRote from "./routes/user.route.js";
+import companyRoute from "./routes/company.route.js";
 
 dotenv.config();
 
@@ -30,7 +31,7 @@ app.use((req, res, next) => {
 
 // API routes
 app.use("/api/v1/user", userRote);
-// app.use("/api/v1/company", companyRoute);
+app.use("/api/v1/company", companyRoute);
 // app.use("/api/v1/jobs", jobRoutes);
 // app.use("/api/v1/applicant", applicantRotes);
 
