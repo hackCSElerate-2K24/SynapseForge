@@ -32,6 +32,7 @@ const Companies = () => {
                 <CompaniesTable/>
             </div>
         </div>
+
     )
 }
 
