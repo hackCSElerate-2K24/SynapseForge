@@ -60,6 +60,8 @@ const Navbar = () => {
                 <li>
                   <Link to="/browse">Browse</Link>
                 </li>
+                
+
               </>
             )}
           </ul>
