@@ -181,11 +181,10 @@ const Courses = () => {
     },
   ];
 
-  const itemsPerPage = 6; // Number of items to display per page
-  const totalPages = Math.ceil(courses.length / itemsPerPage); // Calculate total pages
-  const [currentPage, setCurrentPage] = useState(1); // Current page
+  const itemsPerPage = 6; 
+  const totalPages = Math.ceil(courses.length / itemsPerPage); 
+  const [currentPage, setCurrentPage] = useState(1); 
 
-  // Paginate the courses based on the current page
   const paginateCourses = () => {
     const start = (currentPage - 1) * itemsPerPage;
     const end = start + itemsPerPage;
@@ -202,7 +201,7 @@ const Courses = () => {
           ))}
         </div>
 
-        {/* Pagination Controls */}
+       
         <div className="flex justify-center items-center mt-8">
           <button
             className="px-4 py-2 bg-blue-500 text-white rounded-lg mr-4 hover:bg-blue-600 disabled:bg-gray-300"

@@ -6,11 +6,11 @@ const Ats = () => {
   const [loading, setLoading] = useState(false);
 
   const handleCheckATS = () => {
-    // Start loading and reset score
+   
     setLoading(true);
     setScore(null);
 
-    // Simulate a 5-second delay (5000 milliseconds)
+   
     setTimeout(() => {
       const randomScore = Math.floor(Math.random() * (80 - 25 + 1)) + 25;
       setScore(randomScore);
@@ -59,7 +59,7 @@ const Ats = () => {
             </button>
           </form>
 
-          {/* Display loading spinner or the ATS score */}
+         
           {loading ? (
             <div className="mt-4 text-center">
               <svg

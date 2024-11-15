@@ -87,7 +87,7 @@ const Roadmap = () => {
     navigate("/browse");
   };
 
-  // Filter roadmaps based on query
+ 
   const filteredRoadmaps = Object.keys(roadmaps).filter((domain) =>
     domain.toLowerCase().includes(query.toLowerCase())
   );
@@ -103,7 +103,6 @@ const Roadmap = () => {
           <h1 className="text-5xl font-bold">Choose Your Roadmap & Start Your Learning Journey</h1>
           <p>Pick a domain and follow the roadmap to master it.</p>
 
-          {/* Search Bar */}
           <div className="flex w-[40%] shadow-lg border border-gray-200 pl-3 rounded-full items-center gap-4 mx-auto">
             <input
               type="text"
@@ -116,7 +115,7 @@ const Roadmap = () => {
             </Button>
           </div>
 
-          {/* Roadmap Buttons */}
+     
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
             {filteredRoadmaps.length > 0 ? (
               filteredRoadmaps.map((domain, index) => (

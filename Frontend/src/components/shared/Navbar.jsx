@@ -33,7 +33,7 @@ const Navbar = () => {
     return (
         <div className="bg-white shadow-md">
             <div className="w-full max-w-7xl mx-auto flex items-center justify-between py-4 px-6">
-                {/* Logo Section */}
+               
                 <div className="flex items-center">
                     <img src={logo} alt="Logo" className="h-10 w-10 mr-2" />
                     <h1 className="text-2xl font-bold">
@@ -41,7 +41,7 @@ const Navbar = () => {
                     </h1>
                 </div>
 
-                {/* Navigation Links */}
+               
                 <div className="flex items-center gap-8">
                     <ul className="flex items-center gap-6 font-medium text-gray-700">
                         {user && user.role === 'recruiter' ? (
@@ -74,11 +74,7 @@ const Navbar = () => {
                                         Browse
                                     </Link>
                                 </li>
-                                <li>
-                                    <Link to="/notify" className="hover:text-[#F83002] transition duration-200 hover:underline">
-                                        Notifications
-                                    </Link>
-                                </li>
+                                
                                 <li>
                                     <Link to="/ats-checker" className="hover:text-[#F83002] transition duration-200 hover:underline">
                                         ATS Checker
@@ -113,7 +109,7 @@ const Navbar = () => {
                         )}
                     </ul>
 
-                    {/* Login/Logout/Profile Section */}
+                   
                     {!user ? (
                         <div className="flex items-center gap-4">
                             <Link to="/login">
