@@ -14,6 +14,10 @@ import AdminJobs from "./components/admin/AdminJobs";
 import PostJob from "./components/admin/PostJob";
 import Applicants from "./components/admin/Applicants";
 import ProtectedRoute from "./components/admin/ProtectedRoute";
+import Ats from "./components/Ats";
+import Roadmap from "./components/Roadmap";
+import Courses from "./components/Courses";
+import BoomingTech from "./components/BoomingTech";
 
 const appRouter = createBrowserRouter([
   {
@@ -52,21 +56,21 @@ const appRouter = createBrowserRouter([
     path: "/courses",
     element: <Courses />,
   },
-  {
-    path: "/rank",
-    element: <Rank />,
-  },
-  {
-    path: "/mentorship",
-    element: <Mentorship />,
-  },
+  // {
+  //   path: "/rank",
+  //   element: <Rank />,
+  // },
+  // {
+  //   path: "/mentorship",
+  //   element: <Mentorship />,
+  // },
   {
     path: "/roadmap",
     element: <Roadmap />,
   },
   {
     path: "/trending-domain",
-    element: <Trending />,
+    element: <BoomingTech />,
   },
 
   //admin here start
