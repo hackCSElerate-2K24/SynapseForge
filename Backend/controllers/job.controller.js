@@ -31,26 +31,24 @@ export const postJob = async (req, res) => {
       position,
     });
 
-    // Convert requirements to an array if it's not already
+   
     const requirementsArray = typeof requirements === 'string' ? requirements.split(',').map(skill => skill.trim()) : requirements;
 
-    // Fetch all job seekers' skills via the API
     const response = await axios.get("http://localhost:11000/api/v1/user/job-seeker-skills");
     const jobSeekers = response.data.data;
 
     console.log("Job Seekers:", jobSeekers);
 
-    // Filter matched users based on skills
+  
     const matchedUsers = jobSeekers.filter(user =>
       user.profile.skills.some(skill => requirementsArray.includes(skill))
     );
 
     console.log("Matched Users:", matchedUsers);
 
-    // Send email notifications to matched users
     for (const user of matchedUsers) {
       const emailText = `
-        Hi ${user.fullName},
+        Hi ${user.fullname},
 
         A new job that matches your skills has been posted:
         Title: ${title}
@@ -65,7 +63,7 @@ export const postJob = async (req, res) => {
       await sendEmail(user.email, `New Job Matching Your Skills: ${title}`, emailText);
     }
 
-    // Create the job entry in the database
+ 
     const job = await Job.create({
       title,
       description,
@@ -100,7 +98,7 @@ export const postJob = async (req, res) => {
 
 
 
-// student k liye
+
 export const getAllJobs = async (req, res) => {
   try {
     const keyword = req.query.keyword || "";
@@ -129,7 +127,7 @@ export const getAllJobs = async (req, res) => {
     console.log(error);
   }
 };
-// student
+
 export const getJobById = async (req, res) => {
   try {
     const jobId = req.params.id;
@@ -147,7 +145,7 @@ export const getJobById = async (req, res) => {
     console.log(error);
   }
 };
-// admin kitne job create kra hai abhi tk
+
 export const getAdminJobs = async (req, res) => {
   try {
     const adminId = req.id;

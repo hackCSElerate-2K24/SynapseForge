@@ -1,8 +1,8 @@
-// emailService.js
+
 import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
 
-// Load environment variables from .env file
+
 dotenv.config();
 
 export const transporter = nodemailer.createTransport({

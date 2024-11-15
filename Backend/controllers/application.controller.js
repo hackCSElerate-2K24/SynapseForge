@@ -11,7 +11,7 @@ export const applyJob = async (req, res) => {
         success: false,
       });
     }
-    //check if user has already applied for the job
+   
     const existingApplication = await Application.findOne({
       job: jobId,
       applicant: userId,
@@ -83,7 +83,6 @@ export const getAppliedJobs = async (req, res) => {
   }
 };
 
-//admin ke liye for to check how many people allied to this job
 export const getApplicants = async (req, res) => {
   try {
     const { id } = req.params;
@@ -122,7 +121,7 @@ export const updateStatus = async (req, res) => {
       });
     }
 
-    //find the appliaction by applicant id
+
     const application = await Application.findById(applicationId);
     if (!application) {
       return res.status(404).json({
@@ -130,7 +129,7 @@ export const updateStatus = async (req, res) => {
         success: false,
       });
     }
-    //update the status of the application
+    
     application.status = status.toLowerCase();
     await application.save();
     return res.status(200).json({
