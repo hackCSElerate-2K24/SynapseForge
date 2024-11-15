@@ -9,6 +9,7 @@ import axios from 'axios'
 import { USER_API_END_POINT } from '@/utils/constant'
 import { setUser } from '@/redux/authSlice'
 import { toast } from 'sonner'
+import logo from './logo.jpeg'
 
 const Navbar = () => {
     const { user } = useSelector(store => store.auth);
@@ -34,8 +35,9 @@ const Navbar = () => {
             <div className="w-full max-w-7xl mx-auto flex items-center justify-between py-4 px-6">
                 {/* Logo Section */}
                 <div className="flex items-center">
+                    <img src={logo} alt="Logo" className="h-10 w-10 mr-2" />
                     <h1 className="text-2xl font-bold">
-                        Job<span className="text-[#F83002]">Portal</span>
+                        Udyoga<span className="text-[#F83002]">Bhandu</span>
                     </h1>
                 </div>
 
