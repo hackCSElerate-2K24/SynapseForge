@@ -74,41 +74,41 @@ const Navbar = () => {
                                         Browse
                                     </Link>
                                 </li>
-                                <li>
-                                    <Link to="/notify" className="hover:text-[#F83002] transition duration-200 hover:underline">
-                                        Notifications
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link to="/ats-checker" className="hover:text-[#F83002] transition duration-200 hover:underline">
-                                        ATS Checker
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link to="/courses" className="hover:text-[#F83002] transition duration-200 hover:underline">
-                                        Courses
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link to="/rank" className="hover:text-[#F83002] transition duration-200 hover:underline">
-                                        Rank
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link to="/mentorship" className="hover:text-[#F83002] transition duration-200 hover:underline">
-                                        Mentorship
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link to="/roadmap" className="hover:text-[#F83002] transition duration-200 hover:underline">
-                                        Roadmap
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link to="/trending-domain" className="hover:text-[#F83002] transition duration-200 hover:underline">
-                                        Trending Domains
-                                    </Link>
-                                </li>
+                                {/* Student-only Links */}
+                                {user && user.role === 'student' && (
+                                    <>
+                                        <li>
+                                            <Link to="/ats-checker" className="hover:text-[#F83002] transition duration-200 hover:underline">
+                                                ATS Checker
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link to="/courses" className="hover:text-[#F83002] transition duration-200 hover:underline">
+                                                Courses
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link to="/rank" className="hover:text-[#F83002] transition duration-200 hover:underline">
+                                                Rank
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link to="/mentorship" className="hover:text-[#F83002] transition duration-200 hover:underline">
+                                                Mentorship
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link to="/roadmap" className="hover:text-[#F83002] transition duration-200 hover:underline">
+                                                Roadmap
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link to="/trending-domain" className="hover:text-[#F83002] transition duration-200 hover:underline">
+                                                Trending Domains
+                                            </Link>
+                                        </li>
+                                    </>
+                                )}
                             </>
                         )}
                     </ul>
