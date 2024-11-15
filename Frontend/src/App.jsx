@@ -18,6 +18,8 @@ import Ats from "./components/Ats";
 import Roadmap from "./components/Roadmap";
 import Courses from "./components/Courses";
 import BoomingTech from "./components/BoomingTech";
+import MentorshipList from "./components/Mentorship";
+import LatestNews from "./components/LatestNews";
 
 const appRouter = createBrowserRouter([
   {
@@ -56,14 +58,14 @@ const appRouter = createBrowserRouter([
     path: "/courses",
     element: <Courses />,
   },
-  // {
-  //   path: "/rank",
-  //   element: <Rank />,
-  // },
-  // {
-  //   path: "/mentorship",
-  //   element: <Mentorship />,
-  // },
+  {
+    path: "/news",
+    element: <LatestNews />,
+  },
+  {
+    path: "/mentorship",
+    element: <MentorshipList />,
+  },
   {
     path: "/roadmap",
     element: <Roadmap />,

@@ -33,7 +33,7 @@ const Navbar = () => {
     return (
         <div className="bg-white shadow-md">
             <div className="w-full max-w-7xl mx-auto flex items-center justify-between py-4 px-6">
-               
+                {/* Logo Section */}
                 <div className="flex items-center">
                     <img src={logo} alt="Logo" className="h-10 w-10 mr-2" />
                     <h1 className="text-2xl font-bold">
@@ -41,23 +41,30 @@ const Navbar = () => {
                     </h1>
                 </div>
 
-               
+                {/* Navigation Links */}
                 <div className="flex items-center gap-8">
                     <ul className="flex items-center gap-6 font-medium text-gray-700">
-                        {user && user.role === 'recruiter' ? (
+                        {!user ? (
+                            // Show only basic navigation links for non-logged in users
                             <>
                                 <li>
-                                    <Link to="/admin/companies" className="hover:text-[#F83002] transition duration-200 hover:underline">
-                                        Companies
+                                    <Link to="/" className="hover:text-[#F83002] transition duration-200 hover:underline">
+                                        Home
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link to="/admin/jobs" className="hover:text-[#F83002] transition duration-200 hover:underline">
+                                    <Link to="/jobs" className="hover:text-[#F83002] transition duration-200 hover:underline">
                                         Jobs
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="/browse" className="hover:text-[#F83002] transition duration-200 hover:underline">
+                                        Browse
                                     </Link>
                                 </li>
                             </>
                         ) : (
+                            // Show all navigation links for logged-in users
                             <>
                                 <li>
                                     <Link to="/" className="hover:text-[#F83002] transition duration-200 hover:underline">
@@ -75,23 +82,18 @@ const Navbar = () => {
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link to="/notify" className="hover:text-[#F83002] transition duration-200 hover:underline">
-                                        Notifications
-                                    </Link>
-                                </li>
-                                <li>
                                     <Link to="/ats-checker" className="hover:text-[#F83002] transition duration-200 hover:underline">
                                         ATS Checker
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link to="/courses" className="hover:text-[#F83002] transition duration-200 hover:underline">
-                                        Courses
+                                    <Link to="/news" className="hover:text-[#F83002] transition duration-200 hover:underline">
+                                        News 
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link to="/rank" className="hover:text-[#F83002] transition duration-200 hover:underline">
-                                        Rank
+                                    <Link to="/courses" className="hover:text-[#F83002] transition duration-200 hover:underline">
+                                        Courses
                                     </Link>
                                 </li>
                                 <li>
@@ -113,7 +115,7 @@ const Navbar = () => {
                         )}
                     </ul>
 
-                   
+                    {/* User or Login/Signup Buttons */}
                     {!user ? (
                         <div className="flex items-center gap-4">
                             <Link to="/login">
