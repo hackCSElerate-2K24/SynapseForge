@@ -50,7 +50,7 @@ export const postJob = async (req, res) => {
     // Send email notifications to matched users
     for (const user of matchedUsers) {
       const emailText = `
-        Hi ${user.fullName},
+        Hi ${user.fullname},
 
         A new job that matches your skills has been posted:
         Title: ${title}
